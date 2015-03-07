@@ -9,8 +9,8 @@ all: options cdecl
 
 options:
 	@echo cdecl build options:
-	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "CC       = ${CC}"
+	@echo "CFLAGS   = ${CFLAGS}"
 
 .c.o:
 	@echo CC $<
@@ -20,4 +20,10 @@ ${OBJ}: config.mk
 
 cdecl: ${OBJ}
 	@echo CC -o $@
-	@${CC} -o $@ ${OBJ}
+	@${CC} -o $@ ${OBJ} ${LDFLAGS}
+
+clean:
+	@echo cleaning
+	@rm -f cdecl ${OBJ}
+
+.PHONY: all options clean

@@ -15,7 +15,7 @@
 #define MAX_TOKEN_LEN          64
 
 typedef struct Token {
-	char kind;
+	unsigned char kind;
 	char string[MAX_TOKEN_LEN];
 } Token;
 
@@ -90,7 +90,7 @@ classifytoken(void){
 	if(strcmp(s, "volatile") == 0)
 		return VOLATILE;
 
-	for(int i = 0; i < NELEMS(types); i++)
+	for(unsigned int i = 0; i < NELEMS(types); i++)
 		if(strcmp(s, types[i]) == 0)
 			return TYPE;
 
